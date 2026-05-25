@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket Player Info</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #2a5298;
+        }
+
+        input {
+            padding: 12px;
+            width: 80%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #2a5298;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+            transform: scale(1.05);
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        #result img {
+            width: 120px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        #result p {
+            margin-top: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🏏 Cricket Player Search</h2>
+
+    <input type="text" id="playerName" placeholder="Enter player name">
+    <br>
+    <button onclick="searchPlayer()">Search</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    const players = {
+        viratkohli: {
+            info: "Virat Kohli is a former Indian captain and one of the greatest batsmen in the world.",
+            img: "https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg"
+        },
+        dhoni: {
+            info: "MS Dhoni is one of India's most successful captains and a legendary finisher.",
+            img: "https://upload.wikimedia.org/wikipedia/commons/3/3f/MS_Dhoni_2011.jpg"
+        },
+        rinkusingh: {
+            info: "Rinku Singh is known as a powerful finisher and game changer.",
+            img: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Rinku_Singh.jpg"
+        },
+        bhuvaneswar: {
+            info: "Bhuvneshwar Kumar is known as the swing king of Indian cricket.",
+            img: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Bhuvneshwar_Kumar.jpg"
+        },
+        siraj: {
+            info: "Mohammed Siraj rose from humble beginnings to become a top ODI bowler.",
+            img: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mohammed_Siraj.jpg"
+        }
+    };
+
+    function searchPlayer() {
+        const name = document.getElementById("playerName").value.toLowerCase().replace(/\s/g, '');
+        const result = document.getElementById("result");
+
+        if (players[name]) {
+            result.innerHTML = `
+                <img src="${players[name].img}">
+                <p>${players[name].info}</p>
+            `;
+        } else {
+            result.innerHTML = "<p style='color:red;'>Player not found!</p>";
+        }
+    }
+</script>
+
+</body>
+</html>
